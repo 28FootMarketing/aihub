@@ -1,17 +1,16 @@
+# app.py
 import streamlit as st
 import json
-from admin_panel import load_admin_panel
+from admin_panel import load_admin_panel  # make sure admin_panel.py is in the same folder
 
-# tool_data = {...} # Your agent dictionary or import
-load_admin_panel(tool_data)
-# -------- Settings -------- #
+# ---------- Page Config ----------
 st.set_page_config(
-    page_title="28 Foot Marketing AI Hub",
+    page_title="28 Foot Marketing AI Dashboard",
     layout="wide",
     page_icon="🤖"
 )
 
-# -------- Branding -------- #
+# ---------- Styling ----------
 st.markdown("""
 <style>
 .header {
@@ -32,19 +31,11 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# ---------- Branding ----------
 st.markdown('<div class="header">🤖 28 Foot Marketing AI Dashboard</div>', unsafe_allow_html=True)
-st.markdown('<div class="subheader">Access GPT tools, workflow agents, and automations</div>', unsafe_allow_html=True)
+st.markdown('<div class="subheader">Custom GPT Tools, Recruiting Agents, and Automation Launchpad</div>', unsafe_allow_html=True)
 
-# -------- Sidebar Navigation -------- #
-st.sidebar.title("Agent Menu")
-selected_tool = st.sidebar.radio("Select Agent", [
-    "📣 Recruiting Agents",
-    "🎓 Training Modules",
-    "💼 Business Automation",
-    "🧠 GPT Assistant Tools",
-])
-
-# -------- Tool Info JSON (simulated) -------- #
+# ---------- Tool Data (Mock / Replace with DB or Google Sheet) ----------
 tool_data = {
     "📣 Recruiting Agents": [
         {"name": "Khloe – Lead Closer", "desc": "NEPQ-style follow-up bot to convert athlete leads."},
@@ -64,30 +55,37 @@ tool_data = {
     ]
 }
 
-# -------- Display Section -------- #
-st.markdown(f"### {selected_tool}")
+# ---------- Sidebar Navigation ----------
+st.sidebar.title("Tool Menu")
+menu_option = st.sidebar.radio("Select Section", [
+    "📂 Agent Tools",
+    "🔐 Admin Control Panel"
+])
 
-for tool in tool_data[selected_tool]:
-    st.markdown(f"""
-    <div class="box">
-        <strong>{tool["name"]}</strong><br>
-        {tool["desc"]}
-        <br><br>
-        <a href="https://ai.28footmarketing.com" target="_blank">
-            🔗 Launch Tool
-        </a>
-    </div>
-    """, unsafe_allow_html=True)
+# ---------- Agent Tools Viewer ----------
+if menu_option == "📂 Agent Tools":
+    selected_tool = st.selectbox("Choose a Tool Category", list(tool_data.keys()))
+    st.markdown(f"### {selected_tool}")
 
-# -------- Optional JSON Viewer -------- #
-st.markdown("### 🔍 Raw Agent JSON Preview")
-st.json(tool_data)
+    for tool in tool_data[selected_tool]:
+        st.markdown(f"""
+        <div class="box">
+            <strong>{tool['name']}</strong><br>
+            {tool['desc']}
+            <br><br>
+            <a href="https://ai.28footmarketing.com" target="_blank">
+                🔗 Launch Tool
+            </a>
+        </div>
+        """, unsafe_allow_html=True)
 
-# -------- Placeholder for GHL Integration -------- #
-with st.expander("🔁 Lead Flow Integration (GHL Placeholder)"):
-    st.write("This panel will sync with GoHighLevel to track tool usage, leads, and automation triggers.")
-    st.write("Future feature: Live webhook trigger + tagging via GHL API or n8n.")
+    st.markdown("### 🔍 Raw Agent JSON Preview")
+    st.json(tool_data)
 
-# -------- Footer -------- #
+# ---------- Admin Panel Loader ----------
+elif menu_option == "🔐 Admin Control Panel":
+    load_admin_panel(tool_data)
+
+# ---------- Footer ----------
 st.markdown("---")
 st.markdown("🚀 Powered by 28 Foot Marketing | Visit: [https://28footmarketing.com](https://28footmarketing.com)")
