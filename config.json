@@ -3,48 +3,56 @@
     {
       "name": "Khloe – Lead Closer",
       "desc": "NEPQ-style follow-up bot to convert athlete leads.",
-      "link": "https://ai.28footmarketing.com/khloe"
+      "link": "https://ai.28footmarketing.com/khloe",
+      "image": "https://ai.28footmarketing.com/assets/avatars/khloe.png"
     },
     {
       "name": "Magic – Opportunity Connector",
       "desc": "Matches athletes to best-fit colleges based on stats.",
-      "link": "https://ai.28footmarketing.com/magic"
+      "link": "https://ai.28footmarketing.com/magic",
+      "image": "https://ai.28footmarketing.com/assets/avatars/magic.png"
     }
   ],
   "🎓 Training Modules": [
     {
       "name": "Kobe – Recruiting Educator",
       "desc": "Delivers weekly training tips and challenge-based learning.",
-      "link": "https://ai.28footmarketing.com/kobe"
+      "link": "https://ai.28footmarketing.com/kobe",
+      "image": "https://ai.28footmarketing.com/assets/avatars/kobe.png"
     },
     {
       "name": "Dawn – Mental Reset Agent",
       "desc": "Supports emotional check-ins, discipline, and reset routines.",
-      "link": "https://ai.28footmarketing.com/dawn"
+      "link": "https://ai.28footmarketing.com/dawn",
+      "image": "https://ai.28footmarketing.com/assets/avatars/dawn.png"
     }
   ],
   "💼 Business Automation": [
     {
       "name": "Bill – System Manager",
       "desc": "Monitors agent performance, triggers fallbacks, and audits flows.",
-      "link": "https://ai.28footmarketing.com/bill"
+      "link": "https://ai.28footmarketing.com/bill",
+      "image": "https://ai.28footmarketing.com/assets/avatars/bill.png"
     },
     {
       "name": "Steph – Skill Sharpening",
       "desc": "Improves technical workflows, media presence, and system mastery.",
-      "link": "https://ai.28footmarketing.com/steph"
+      "link": "https://ai.28footmarketing.com/steph",
+      "image": "https://ai.28footmarketing.com/assets/avatars/steph.png"
     }
   ],
   "🧠 GPT Assistant Tools": [
     {
       "name": "Recruit Tip Bot",
       "desc": "Delivers daily recruiting tips and reminders.",
-      "link": "https://ai.28footmarketing.com/tipbot"
+      "link": "https://ai.28footmarketing.com/tipbot",
+      "image": "https://ai.28footmarketing.com/assets/avatars/tipbot.png"
     },
     {
       "name": "Parent Support GPT",
       "desc": "Explains the recruiting journey in plain parent-friendly language.",
-      "link": "https://ai.28footmarketing.com/parent"
+      "link": "https://ai.28footmarketing.com/parent",
+      "image": "https://ai.28footmarketing.com/assets/avatars/parent.png"
     }
   ]
 }
