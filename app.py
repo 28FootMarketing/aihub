@@ -1,7 +1,7 @@
 # app.py
 import streamlit as st
 import json
-from admin_panel import load_admin_panel  # make sure admin_panel.py is in the same folder
+from admin_panel import load_admin_panel  # Ensure admin_panel.py is in the same directory
 
 # ---------- Page Config ----------
 st.set_page_config(
@@ -35,25 +35,13 @@ st.markdown("""
 st.markdown('<div class="header">🤖 28 Foot Marketing AI Dashboard</div>', unsafe_allow_html=True)
 st.markdown('<div class="subheader">Custom GPT Tools, Recruiting Agents, and Automation Launchpad</div>', unsafe_allow_html=True)
 
-# ---------- Tool Data (Mock / Replace with DB or Google Sheet) ----------
-tool_data = {
-    "📣 Recruiting Agents": [
-        {"name": "Khloe – Lead Closer", "desc": "NEPQ-style follow-up bot to convert athlete leads."},
-        {"name": "Magic – Opportunity Connector", "desc": "Matches athletes to best-fit colleges based on stats."}
-    ],
-    "🎓 Training Modules": [
-        {"name": "Kobe – Recruiting Educator", "desc": "Delivers weekly training and challenge content."},
-        {"name": "Dawn – Mental Reset Agent", "desc": "Supports emotional discipline and check-ins."}
-    ],
-    "💼 Business Automation": [
-        {"name": "Bill – System Manager", "desc": "Monitors agent flows, alerts, and fallback automations."},
-        {"name": "Steph – Skill Sharpening", "desc": "Improves technical workflows and marketing systems."}
-    ],
-    "🧠 GPT Assistant Tools": [
-        {"name": "Recruit Tip Bot", "desc": "Delivers a daily recruiting tip via SMS or email."},
-        {"name": "Parent Support GPT", "desc": "Explains the recruiting process in plain language."}
-    ]
-}
+# ---------- Load Tool Data from config.json ----------
+try:
+    with open("config.json", "r") as file:
+        tool_data = json.load(file)
+except FileNotFoundError:
+    st.error("❌ Could not find config.json. Please add the file to the project directory.")
+    tool_data = {}
 
 # ---------- Sidebar Navigation ----------
 st.sidebar.title("Tool Menu")
@@ -64,23 +52,26 @@ menu_option = st.sidebar.radio("Select Section", [
 
 # ---------- Agent Tools Viewer ----------
 if menu_option == "📂 Agent Tools":
-    selected_tool = st.selectbox("Choose a Tool Category", list(tool_data.keys()))
-    st.markdown(f"### {selected_tool}")
+    if tool_data:
+        selected_tool = st.selectbox("Choose a Tool Category", list(tool_data.keys()))
+        st.markdown(f"### {selected_tool}")
 
-    for tool in tool_data[selected_tool]:
-        st.markdown(f"""
-        <div class="box">
-            <strong>{tool['name']}</strong><br>
-            {tool['desc']}
-            <br><br>
-            <a href="https://ai.28footmarketing.com" target="_blank">
-                🔗 Launch Tool
-            </a>
-        </div>
-        """, unsafe_allow_html=True)
+        for tool in tool_data[selected_tool]:
+            st.markdown(f"""
+            <div class="box">
+                <strong>{tool['name']}</strong><br>
+                {tool['desc']}
+                <br><br>
+                <a href="{tool['link']}" target="_blank">
+                    🔗 Launch Tool
+                </a>
+            </div>
+            """, unsafe_allow_html=True)
 
-    st.markdown("### 🔍 Raw Agent JSON Preview")
-    st.json(tool_data)
+        st.markdown("### 🔍 Raw Agent JSON Preview")
+        st.json(tool_data)
+    else:
+        st.warning("No agent data available. Check your config.json file.")
 
 # ---------- Admin Panel Loader ----------
 elif menu_option == "🔐 Admin Control Panel":
