@@ -1,6 +1,9 @@
 import streamlit as st
 import json
+from admin_panel import load_admin_panel
 
+# tool_data = {...} # Your agent dictionary or import
+load_admin_panel(tool_data)
 # -------- Settings -------- #
 st.set_page_config(
     page_title="28 Foot Marketing AI Hub",
