@@ -1,7 +1,7 @@
 # app.py
 import streamlit as st
 import json
-from admin_panel import load_admin_panel  # Ensure admin_panel.py is in the same directory
+from admin_panel import load_admin_panel
 
 # ---------- Page Config ----------
 st.set_page_config(
@@ -27,6 +27,9 @@ st.markdown("""
     padding:20px;
     border-radius:10px;
     margin-bottom:20px;
+}
+.avatar {
+    border-radius: 50%;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -57,16 +60,15 @@ if menu_option == "📂 Agent Tools":
         st.markdown(f"### {selected_tool}")
 
         for tool in tool_data[selected_tool]:
-            st.markdown(f"""
-            <div class="box">
-                <strong>{tool['name']}</strong><br>
-                {tool['desc']}
-                <br><br>
-                <a href="{tool['link']}" target="_blank">
-                    🔗 Launch Tool
-                </a>
-            </div>
-            """, unsafe_allow_html=True)
+            with st.container():
+                cols = st.columns([1, 5])
+                with cols[0]:
+                    if "image" in tool:
+                        st.image(tool["image"], width=90)
+                with cols[1]:
+                    st.markdown(f"**{tool['name']}**")
+                    st.markdown(tool["desc"])
+                    st.markdown(f"[🔗 Launch Tool]({tool['link']})")
 
         st.markdown("### 🔍 Raw Agent JSON Preview")
         st.json(tool_data)
