@@ -1,0 +1,50 @@
+{
+  "📣 Recruiting Agents": [
+    {
+      "name": "Khloe – Lead Closer",
+      "desc": "NEPQ-style follow-up bot to convert athlete leads.",
+      "link": "https://ai.28footmarketing.com/khloe"
+    },
+    {
+      "name": "Magic – Opportunity Connector",
+      "desc": "Matches athletes to best-fit colleges based on stats.",
+      "link": "https://ai.28footmarketing.com/magic"
+    }
+  ],
+  "🎓 Training Modules": [
+    {
+      "name": "Kobe – Recruiting Educator",
+      "desc": "Delivers weekly training tips and challenge-based learning.",
+      "link": "https://ai.28footmarketing.com/kobe"
+    },
+    {
+      "name": "Dawn – Mental Reset Agent",
+      "desc": "Supports emotional check-ins, discipline, and reset routines.",
+      "link": "https://ai.28footmarketing.com/dawn"
+    }
+  ],
+  "💼 Business Automation": [
+    {
+      "name": "Bill – System Manager",
+      "desc": "Monitors agent performance, triggers fallbacks, and audits flows.",
+      "link": "https://ai.28footmarketing.com/bill"
+    },
+    {
+      "name": "Steph – Skill Sharpening",
+      "desc": "Improves technical workflows, media presence, and system mastery.",
+      "link": "https://ai.28footmarketing.com/steph"
+    }
+  ],
+  "🧠 GPT Assistant Tools": [
+    {
+      "name": "Recruit Tip Bot",
+      "desc": "Delivers daily recruiting tips and reminders.",
+      "link": "https://ai.28footmarketing.com/tipbot"
+    },
+    {
+      "name": "Parent Support GPT",
+      "desc": "Explains the recruiting journey in plain parent-friendly language.",
+      "link": "https://ai.28footmarketing.com/parent"
+    }
+  ]
+}
