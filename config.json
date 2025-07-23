@@ -9,18 +9,14 @@
       "category": "\ud83d\udce3 Recruiting Agents",
       "updated": "2025-07-23",
       "launch_count": 4,
+      "roles_allowed": [
+        "athlete",
+        "coach",
+        "parent"
+      ],
       "paywall": {
-        "active": false
-      },
-      "access": {
-        "roles": [
-          "athlete",
-          "coach"
-        ],
-        "orgs": [
-          "default"
-        ],
-        "expires": null
+        "active": false,
+        "token_id": null
       }
     },
     {
@@ -32,18 +28,14 @@
       "category": "\ud83d\udce3 Recruiting Agents",
       "updated": "2025-07-23",
       "launch_count": 3,
+      "roles_allowed": [
+        "athlete",
+        "coach",
+        "parent"
+      ],
       "paywall": {
-        "active": false
-      },
-      "access": {
-        "roles": [
-          "athlete",
-          "coach"
-        ],
-        "orgs": [
-          "default"
-        ],
-        "expires": null
+        "active": false,
+        "token_id": null
       }
     }
   ],
@@ -62,15 +54,11 @@
         "stripe_url": "https://buy.stripe.com/test_checkoutkobe",
         "token_id": "token_kobe_001"
       },
-      "access": {
-        "roles": [
-          "athlete"
-        ],
-        "orgs": [
-          "default"
-        ],
-        "expires": null
-      }
+      "roles_allowed": [
+        "athlete",
+        "coach",
+        "parent"
+      ]
     },
     {
       "name": "Dawn \u2013 Mental Reset Agent",
@@ -81,19 +69,96 @@
       "category": "\ud83c\udf93 Training Modules",
       "updated": "2025-07-23",
       "launch_count": 6,
+      "roles_allowed": [
+        "athlete",
+        "coach",
+        "parent"
+      ],
       "paywall": {
-        "active": false
-      },
-      "access": {
-        "roles": [
-          "athlete",
-          "parent"
-        ],
-        "orgs": [
-          "default"
-        ],
-        "expires": null
+        "active": false,
+        "token_id": null
       }
+    }
+  ],
+  "\ud83d\udcbc Business Automation": [
+    {
+      "name": "Bill \u2013 System Manager",
+      "desc": "Monitors agent performance, triggers fallbacks, and audits flows.",
+      "link": "https://ai.28footmarketing.com/bill",
+      "image": "https://ai.28footmarketing.com/assets/avatars/bill.png",
+      "badge": "\ud83d\udee0",
+      "category": "\ud83d\udcbc Business Automation",
+      "updated": "2025-07-23",
+      "launch_count": 5,
+      "roles_allowed": [
+        "athlete",
+        "coach",
+        "parent"
+      ],
+      "paywall": {
+        "active": false,
+        "token_id": null
+      }
+    },
+    {
+      "name": "Steph \u2013 Skill Sharpening",
+      "desc": "Improves technical workflows, media presence, and system mastery.",
+      "link": "https://ai.28footmarketing.com/steph",
+      "image": "https://ai.28footmarketing.com/assets/avatars/steph.png",
+      "badge": "\ud83d\udcc8",
+      "category": "\ud83d\udcbc Business Automation",
+      "updated": "2025-07-23",
+      "launch_count": 2,
+      "roles_allowed": [
+        "athlete",
+        "coach",
+        "parent"
+      ],
+      "paywall": {
+        "active": false,
+        "token_id": null
+      }
+    }
+  ],
+  "\ud83e\udde0 GPT Assistant Tools": [
+    {
+      "name": "Recruit Tip Bot",
+      "desc": "Delivers daily recruiting tips and reminders.",
+      "link": "https://ai.28footmarketing.com/tipbot",
+      "image": "https://ai.28footmarketing.com/assets/avatars/tipbot.png",
+      "badge": "\ud83d\udcec",
+      "category": "\ud83e\udde0 GPT Assistant Tools",
+      "updated": "2025-07-23",
+      "launch_count": 7,
+      "roles_allowed": [
+        "athlete",
+        "coach",
+        "parent"
+      ],
+      "paywall": {
+        "active": false,
+        "token_id": null
+      }
+    },
+    {
+      "name": "Parent Support GPT",
+      "desc": "Explains the recruiting journey in plain parent-friendly language.",
+      "link": "https://ai.28footmarketing.com/parent",
+      "image": "https://ai.28footmarketing.com/assets/avatars/parent.png",
+      "badge": "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67",
+      "category": "\ud83e\udde0 GPT Assistant Tools",
+      "updated": "2025-07-23",
+      "launch_count": 9,
+      "paywall": {
+        "active": true,
+        "stripe_url": "https://buy.stripe.com/test_checkoutparent",
+        "token_id": "token_parent_002"
+      },
+      "roles_allowed": [
+        "athlete",
+        "coach",
+        "parent"
+      ]
     }
   ]
 }
