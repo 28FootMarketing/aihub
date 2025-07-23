@@ -1,4 +1,4 @@
-updated_admin_panel = """
+
 # admin_panel.py
 
 import streamlit as st
@@ -94,11 +94,3 @@ def load_admin_panel(tool_data):
             st.download_button("⬇ Download config.json", data=json.dumps(tool_data), file_name="config.json")
     else:
         st.warning("🔒 Admin panel locked. Enter admin code in sidebar.")
-"""
-
-# Save the updated admin panel file
-admin_panel_path = "/mnt/data/admin_panel.py"
-with open(admin_panel_path, "w") as f:
-    f.write(updated_admin_panel)
-
-admin_panel_path
