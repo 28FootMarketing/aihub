@@ -8,7 +8,10 @@
       "badge": "🔥",
       "category": "📣 Recruiting Agents",
       "updated": "2025-07-22",
-      "launch_count": 0
+      "launch_count": 0,
+      "paywall": {
+        "active": false
+      }
     },
     {
       "name": "Magic – Opportunity Connector",
@@ -18,7 +21,10 @@
       "badge": "🆕",
       "category": "📣 Recruiting Agents",
       "updated": "2025-07-22",
-      "launch_count": 0
+      "launch_count": 0,
+      "paywall": {
+        "active": false
+      }
     }
   ],
   "🎓 Training Modules": [
@@ -30,7 +36,12 @@
       "badge": "💪",
       "category": "🎓 Training Modules",
       "updated": "2025-07-22",
-      "launch_count": 0
+      "launch_count": 0,
+      "paywall": {
+        "active": true,
+        "stripe_url": "https://buy.stripe.com/test_checkoutkobe",
+        "unlock_token": "kobeaccess123"
+      }
     },
     {
       "name": "Dawn – Mental Reset Agent",
@@ -40,7 +51,10 @@
       "badge": "🧘",
       "category": "🎓 Training Modules",
       "updated": "2025-07-22",
-      "launch_count": 0
+      "launch_count": 0,
+      "paywall": {
+        "active": false
+      }
     }
   ],
   "💼 Business Automation": [
@@ -52,7 +66,10 @@
       "badge": "🛠",
       "category": "💼 Business Automation",
       "updated": "2025-07-22",
-      "launch_count": 0
+      "launch_count": 0,
+      "paywall": {
+        "active": false
+      }
     },
     {
       "name": "Steph – Skill Sharpening",
@@ -62,7 +79,10 @@
       "badge": "📈",
       "category": "💼 Business Automation",
       "updated": "2025-07-22",
-      "launch_count": 0
+      "launch_count": 0,
+      "paywall": {
+        "active": false
+      }
     }
   ],
   "🧠 GPT Assistant Tools": [
@@ -74,7 +94,10 @@
       "badge": "📬",
       "category": "🧠 GPT Assistant Tools",
       "updated": "2025-07-22",
-      "launch_count": 0
+      "launch_count": 0,
+      "paywall": {
+        "active": false
+      }
     },
     {
       "name": "Parent Support GPT",
@@ -84,7 +107,12 @@
       "badge": "👨‍👩‍👧",
       "category": "🧠 GPT Assistant Tools",
       "updated": "2025-07-22",
-      "launch_count": 0
+      "launch_count": 0,
+      "paywall": {
+        "active": true,
+        "stripe_url": "https://buy.stripe.com/test_checkoutparent",
+        "unlock_token": "parentgpt123"
+      }
     }
   ]
 }
