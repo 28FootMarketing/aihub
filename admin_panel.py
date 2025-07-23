@@ -1,14 +1,6 @@
-# admin_panel.py
-
 import streamlit as st
 import base64
 import json
-import datetime
-import requests
-
-# Constants
-GOOGLE_SHEET_WEBHOOK = "https://your-webhook-url.com/save-agent"  # Replace with real webhook or n8n endpoint
-TOKEN_ROTATOR_URL = "https://your-webhook-url.com/rotate-token"   # Optional for dynamic token rotation
 
 def load_admin_panel(tool_data):
     st.sidebar.markdown("### Admin Access")
@@ -17,79 +9,43 @@ def load_admin_panel(tool_data):
     if admin_code == "28FootAccess":
         st.markdown("## 🔐 Admin Control Panel")
 
-        tab1, tab2, tab3, tab4, tab5 = st.tabs([
+        tab1, tab2, tab3, tab4 = st.tabs([
             "🛠 Manage Agents",
-            "📸 Upload Avatars",
-            "💳 Paywall Setup",
+            "📸 Upload Assets",
             "🔁 GHL Triggers",
-            "📥 Export Logs"
+            "📥 Export / Logs"
         ])
 
         with tab1:
             st.markdown("### 🔧 Edit or Add Agent")
             agent_name = st.text_input("Agent Name")
-            agent_category = st.selectbox("Category", list(tool_data.keys()))
+            agent_category = st.selectbox("Category", ["📣 Recruiting Agents", "🎓 Training Modules", "💼 Business Automation", "🧠 GPT Assistant Tools"])
             agent_desc = st.text_area("Agent Description")
-            agent_link = st.text_input("Agent Launch URL")
-            agent_image = st.text_input("Avatar Image URL")
-            agent_badge = st.text_input("Badge Emoji", value="🎯")
-            agent_updated = datetime.date.today().isoformat()
+            agent_link = st.text_input("Launch Link")
+            selected_roles = st.multiselect("Who can access this tool?", options=['athlete', 'parent', 'coach', 'admin'])
 
             if st.button("✅ Save Agent"):
-                new_agent = {
-                    "name": agent_name,
-                    "desc": agent_desc,
-                    "link": agent_link,
-                    "image": agent_image,
-                    "badge": agent_badge,
-                    "category": agent_category,
-                    "updated": agent_updated,
-                    "launch_count": 0,
-                    "paywall": {"active": False}
-                }
-
-                try:
-                    response = requests.post(GOOGLE_SHEET_WEBHOOK, json=new_agent)
-                    if response.status_code == 200:
-                        st.success(f"Agent '{agent_name}' saved successfully.")
-                    else:
-                        st.error("Save failed. Please check webhook URL.")
-                except Exception as e:
-                    st.error(f"Error: {e}")
+                st.success(f"Agent '{agent_name}' saved (simulated).")
+                # Simulated backend update: roles are stored via selected_roles
 
         with tab2:
-            st.markdown("### 🖼 Upload Avatar Image")
-            uploaded_file = st.file_uploader("Upload avatar", type=["png", "jpg", "jpeg"])
+            st.markdown("### 🖼 Upload Avatar")
+            uploaded_file = st.file_uploader("Upload an avatar image", type=["png", "jpg", "jpeg"])
             if uploaded_file:
                 st.image(uploaded_file, caption="Preview")
                 b64 = base64.b64encode(uploaded_file.getvalue()).decode()
-                st.text_area("Base64 String", b64[:200] + "...")
+                st.text_area("Base64 Embed (first 200 chars)", b64[:200] + "...")
 
         with tab3:
-            st.markdown("### 💳 Paywall Token + Stripe Setup")
-            token_agent_name = st.text_input("Agent Name (Token Protected)")
-            stripe_url = st.text_input("Stripe Checkout URL")
-            if st.button("🔐 Generate & Assign Token"):
-                try:
-                    payload = {"tool": token_agent_name}
-                    res = requests.post(TOKEN_ROTATOR_URL, json=payload)
-                    if res.status_code == 200:
-                        generated_token = res.json().get("token", "unknown")
-                        st.success(f"Token generated: {generated_token}")
-                    else:
-                        st.warning("Failed to generate token.")
-                except Exception as e:
-                    st.error(f"Token error: {e}")
+            st.markdown("### 🔁 Trigger GHL Webhook")
+            email = st.text_input("Lead Email")
+            tag = st.text_input("GHL Tag to Apply")
+            if st.button("📨 Send Tag to GHL"):
+                st.success(f"Webhook triggered (placeholder) for {email} with tag '{tag}'")
 
         with tab4:
-            st.markdown("### 🔁 Trigger GHL Tag")
-            email = st.text_input("Lead Email")
-            tag = st.text_input("Tag to Apply in GHL")
-            if st.button("📨 Apply Tag"):
-                st.success(f"Webhook triggered for {email} with tag '{tag}' (simulated).")
-
-        with tab5:
-            st.markdown("### 📥 Download Agent Data")
-            st.download_button("⬇ Download config.json", data=json.dumps(tool_data), file_name="config.json")
+            st.markdown("### 📥 Export Logs")
+            st.download_button("Download Session JSON", data=json.dumps(tool_data), file_name="session_logs.json")
     else:
-        st.warning("🔒 Admin panel locked. Enter admin code in sidebar.")
+        st.warning("🔒 Admin panel locked. Enter access code in sidebar.")
+        
