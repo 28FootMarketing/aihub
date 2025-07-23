@@ -18,7 +18,7 @@ except FileNotFoundError:
     tool_data = {}
 
 # ---------- Query Unlock Token ----------
-query_params = st.experimental_get_query_params()
+query_params = st.query_params
 unlocked_token = query_params.get("unlock", [None])[0]
 
 # ---------- Header ----------
