@@ -1,6 +1,29 @@
 {
   "\ud83d\udce3 Recruiting Agents": [
     {
+      "name": "Khloe \u2013 Lead Closer",
+      "desc": "NEPQ-style follow-up bot to convert athlete leads.",
+      "link": "https://ai.28footmarketing.com/khloe",
+      "image": "https://ai.28footmarketing.com/assets/avatars/khloe.png",
+      "badge": "\ud83d\udd25",
+      "category": "\ud83d\udce3 Recruiting Agents",
+      "updated": "2025-07-23",
+      "launch_count": 4,
+      "paywall": {
+        "active": false
+      },
+      "access": {
+        "roles": [
+          "athlete",
+          "coach"
+        ],
+        "orgs": [
+          "default"
+        ],
+        "expires": null
+      }
+    },
+    {
       "name": "Magic \u2013 Opportunity Connector",
       "desc": "Matches athletes to best-fit colleges based on stats.",
       "link": "https://ai.28footmarketing.com/magic",
@@ -8,42 +31,20 @@
       "badge": "\ud83c\udd95",
       "category": "\ud83d\udce3 Recruiting Agents",
       "updated": "2025-07-23",
-      "launch_count": 4,
+      "launch_count": 3,
       "paywall": {
-        "active": true,
-        "unlock_type": "token",
-        "stripe_url": "https://buy.stripe.com/test_checkoutkhloe",
-        "token_id": "token_magic_002"
+        "active": false
       },
-      "persona": "Confident, Motivational, No-Nonsense",
-      "tags": [
-        "Follow-up",
-        "Conversion",
-        "Sales"
-      ],
       "access": {
         "roles": [
           "athlete",
-          "parent"
-        ]
-      },
-      "limits": {
-        "max_launches": 3,
-        "reset": "daily"
-      },
-      "version": "v2.1.0",
-      "onboarding": {
-        "video": "https://yourlink.com/welcome-khloe",
-        "pdf": "https://yourlink.com/khloe-guide.pdf"
-      },
-      "last_active": "2025-07-23T10:15:00Z",
-      "referral": {
-        "enabled": true,
-        "parameter": "ref",
-        "track_url": "https://track.28footmarketing.com/collect"
-      },
-      "featured": true,
-      "token_id": "token_magic_002"
+          "coach"
+        ],
+        "orgs": [
+          "default"
+        ],
+        "expires": null
+      }
     }
   ],
   "\ud83c\udf93 Training Modules": [
@@ -55,42 +56,21 @@
       "badge": "\ud83d\udcaa",
       "category": "\ud83c\udf93 Training Modules",
       "updated": "2025-07-23",
-      "launch_count": 4,
+      "launch_count": 8,
       "paywall": {
         "active": true,
-        "unlock_type": "token",
-        "stripe_url": "https://buy.stripe.com/test_checkoutkhloe",
+        "stripe_url": "https://buy.stripe.com/test_checkoutkobe",
         "token_id": "token_kobe_001"
       },
-      "persona": "Confident, Motivational, No-Nonsense",
-      "tags": [
-        "Follow-up",
-        "Conversion",
-        "Sales"
-      ],
       "access": {
         "roles": [
-          "athlete",
-          "parent"
-        ]
-      },
-      "limits": {
-        "max_launches": 3,
-        "reset": "daily"
-      },
-      "version": "v2.1.0",
-      "onboarding": {
-        "video": "https://yourlink.com/welcome-khloe",
-        "pdf": "https://yourlink.com/khloe-guide.pdf"
-      },
-      "last_active": "2025-07-23T10:15:00Z",
-      "referral": {
-        "enabled": true,
-        "parameter": "ref",
-        "track_url": "https://track.28footmarketing.com/collect"
-      },
-      "featured": true,
-      "token_id": "token_kobe_001"
+          "athlete"
+        ],
+        "orgs": [
+          "default"
+        ],
+        "expires": null
+      }
     },
     {
       "name": "Dawn \u2013 Mental Reset Agent",
@@ -100,226 +80,20 @@
       "badge": "\ud83e\uddd8",
       "category": "\ud83c\udf93 Training Modules",
       "updated": "2025-07-23",
-      "launch_count": 4,
+      "launch_count": 6,
       "paywall": {
-        "active": true,
-        "unlock_type": "token",
-        "stripe_url": "https://buy.stripe.com/test_checkoutkhloe",
-        "token_id": "token_dawn_002"
+        "active": false
       },
-      "persona": "Confident, Motivational, No-Nonsense",
-      "tags": [
-        "Follow-up",
-        "Conversion",
-        "Sales"
-      ],
       "access": {
         "roles": [
           "athlete",
           "parent"
-        ]
-      },
-      "limits": {
-        "max_launches": 3,
-        "reset": "daily"
-      },
-      "version": "v2.1.0",
-      "onboarding": {
-        "video": "https://yourlink.com/welcome-khloe",
-        "pdf": "https://yourlink.com/khloe-guide.pdf"
-      },
-      "last_active": "2025-07-23T10:15:00Z",
-      "referral": {
-        "enabled": true,
-        "parameter": "ref",
-        "track_url": "https://track.28footmarketing.com/collect"
-      },
-      "featured": true,
-      "token_id": "token_dawn_002"
-    }
-  ],
-  "\ud83d\udcbc Business Automation": [
-    {
-      "name": "Bill \u2013 System Manager",
-      "desc": "Monitors agent performance, triggers fallbacks, and audits flows.",
-      "link": "https://ai.28footmarketing.com/bill",
-      "image": "https://ai.28footmarketing.com/assets/avatars/bill.png",
-      "badge": "\ud83d\udee0",
-      "category": "\ud83d\udcbc Business Automation",
-      "updated": "2025-07-23",
-      "launch_count": 4,
-      "paywall": {
-        "active": true,
-        "unlock_type": "token",
-        "stripe_url": "https://buy.stripe.com/test_checkoutkhloe",
-        "token_id": "token_bill_003"
-      },
-      "persona": "Confident, Motivational, No-Nonsense",
-      "tags": [
-        "Follow-up",
-        "Conversion",
-        "Sales"
-      ],
-      "access": {
-        "roles": [
-          "athlete",
-          "parent"
-        ]
-      },
-      "limits": {
-        "max_launches": 3,
-        "reset": "daily"
-      },
-      "version": "v2.1.0",
-      "onboarding": {
-        "video": "https://yourlink.com/welcome-khloe",
-        "pdf": "https://yourlink.com/khloe-guide.pdf"
-      },
-      "last_active": "2025-07-23T10:15:00Z",
-      "referral": {
-        "enabled": true,
-        "parameter": "ref",
-        "track_url": "https://track.28footmarketing.com/collect"
-      },
-      "featured": true,
-      "token_id": "token_bill_003"
-    },
-    {
-      "name": "Steph \u2013 Skill Sharpening",
-      "desc": "Improves technical workflows, media presence, and system mastery.",
-      "link": "https://ai.28footmarketing.com/steph",
-      "image": "https://ai.28footmarketing.com/assets/avatars/steph.png",
-      "badge": "\ud83d\udcc8",
-      "category": "\ud83d\udcbc Business Automation",
-      "updated": "2025-07-23",
-      "launch_count": 4,
-      "paywall": {
-        "active": true,
-        "unlock_type": "token",
-        "stripe_url": "https://buy.stripe.com/test_checkoutkhloe",
-        "token_id": "token_steph_004"
-      },
-      "persona": "Confident, Motivational, No-Nonsense",
-      "tags": [
-        "Follow-up",
-        "Conversion",
-        "Sales"
-      ],
-      "access": {
-        "roles": [
-          "athlete",
-          "parent"
-        ]
-      },
-      "limits": {
-        "max_launches": 3,
-        "reset": "daily"
-      },
-      "version": "v2.1.0",
-      "onboarding": {
-        "video": "https://yourlink.com/welcome-khloe",
-        "pdf": "https://yourlink.com/khloe-guide.pdf"
-      },
-      "last_active": "2025-07-23T10:15:00Z",
-      "referral": {
-        "enabled": true,
-        "parameter": "ref",
-        "track_url": "https://track.28footmarketing.com/collect"
-      },
-      "featured": true,
-      "token_id": "token_steph_004"
-    }
-  ],
-  "\ud83e\udde0 GPT Assistant Tools": [
-    {
-      "name": "Recruit Tip Bot",
-      "desc": "Delivers daily recruiting tips and reminders.",
-      "link": "https://ai.28footmarketing.com/tipbot",
-      "image": "https://ai.28footmarketing.com/assets/avatars/tipbot.png",
-      "badge": "\ud83d\udcec",
-      "category": "\ud83e\udde0 GPT Assistant Tools",
-      "updated": "2025-07-23",
-      "launch_count": 4,
-      "paywall": {
-        "active": true,
-        "unlock_type": "token",
-        "stripe_url": "https://buy.stripe.com/test_checkoutkhloe",
-        "token_id": "token_tipbot_005"
-      },
-      "persona": "Confident, Motivational, No-Nonsense",
-      "tags": [
-        "Follow-up",
-        "Conversion",
-        "Sales"
-      ],
-      "access": {
-        "roles": [
-          "athlete",
-          "parent"
-        ]
-      },
-      "limits": {
-        "max_launches": 3,
-        "reset": "daily"
-      },
-      "version": "v2.1.0",
-      "onboarding": {
-        "video": "https://yourlink.com/welcome-khloe",
-        "pdf": "https://yourlink.com/khloe-guide.pdf"
-      },
-      "last_active": "2025-07-23T10:15:00Z",
-      "referral": {
-        "enabled": true,
-        "parameter": "ref",
-        "track_url": "https://track.28footmarketing.com/collect"
-      },
-      "featured": true,
-      "token_id": "token_tipbot_005"
-    },
-    {
-      "name": "Parent Support GPT",
-      "desc": "Explains the recruiting journey in plain parent-friendly language.",
-      "link": "https://ai.28footmarketing.com/parent",
-      "image": "https://ai.28footmarketing.com/assets/avatars/parent.png",
-      "badge": "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67",
-      "category": "\ud83e\udde0 GPT Assistant Tools",
-      "updated": "2025-07-23",
-      "launch_count": 4,
-      "paywall": {
-        "active": true,
-        "unlock_type": "token",
-        "stripe_url": "https://buy.stripe.com/test_checkoutkhloe",
-        "token_id": "token_parent_006"
-      },
-      "persona": "Confident, Motivational, No-Nonsense",
-      "tags": [
-        "Follow-up",
-        "Conversion",
-        "Sales"
-      ],
-      "access": {
-        "roles": [
-          "athlete",
-          "parent"
-        ]
-      },
-      "limits": {
-        "max_launches": 3,
-        "reset": "daily"
-      },
-      "version": "v2.1.0",
-      "onboarding": {
-        "video": "https://yourlink.com/welcome-khloe",
-        "pdf": "https://yourlink.com/khloe-guide.pdf"
-      },
-      "last_active": "2025-07-23T10:15:00Z",
-      "referral": {
-        "enabled": true,
-        "parameter": "ref",
-        "track_url": "https://track.28footmarketing.com/collect"
-      },
-      "featured": true,
-      "token_id": "token_parent_006"
+        ],
+        "orgs": [
+          "default"
+        ],
+        "expires": null
+      }
     }
   ]
 }
