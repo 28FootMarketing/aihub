@@ -1,19 +1,13 @@
-# app.py
 import streamlit as st
 import json
 import base64
-from urllib.parse import parse_qs
-query_params = st.experimental_get_query_params()
-unlocked_token = query_params.get("unlock", [None])[0]
 
-paywall = tool.get("paywall", {})
-if paywall.get("active"):
-    if unlocked_token != paywall.get("unlock_token"):
-        st.warning("🔒 Premium tool. Please unlock to continue.")
-        st.markdown(f"[🔓 Unlock Now]({paywall.get('stripe_url')})")
-        st.stop()
 # ---------- Config ----------
-st.set_page_config(page_title="28 Foot AI Dashboard", layout="wide", page_icon="🤖")
+st.set_page_config(
+    page_title="28 Foot AI Dashboard",
+    layout="wide",
+    page_icon="🤖"
+)
 
 # ---------- Load Tool Data ----------
 try:
@@ -22,6 +16,10 @@ try:
 except FileNotFoundError:
     st.error("❌ config.json missing.")
     tool_data = {}
+
+# ---------- Query Unlock Token ----------
+query_params = st.experimental_get_query_params()
+unlocked_token = query_params.get("unlock", [None])[0]
 
 # ---------- Header ----------
 st.markdown("""
@@ -55,15 +53,27 @@ if view == "🌐 Public Dashboard":
     if tool_data:
         selected_tool = st.selectbox("Choose a Tool Category", list(tool_data.keys()))
         st.markdown(f"### {selected_tool}")
+
         for tool in tool_data[selected_tool]:
+            paywall = tool.get("paywall", {})
+
+            # ---------- Paywall Protection ----------
+            if paywall.get("active"):
+                if unlocked_token != paywall.get("unlock_token"):
+                    st.warning("🔒 This is a premium tool. Please unlock to continue.")
+                    st.markdown(f"[🔓 Unlock Now]({paywall.get('stripe_url')})")
+                    continue  # Skip to next tool
+
+            # ---------- Display Agent Info ----------
             with st.container():
                 cols = st.columns([1, 5])
                 with cols[0]:
                     st.image(tool["image"], width=90)
                 with cols[1]:
-                    st.markdown(f"**{tool['name']}**")
+                    st.markdown(f"**{tool['name']}** {tool.get('badge', '')}")
                     st.markdown(tool["desc"])
                     st.markdown(f"[🔗 Launch Tool]({tool['link']})")
+
     else:
         st.warning("No tools available. Check config.json.")
 
@@ -86,20 +96,33 @@ elif view == "🔐 Admin Panel":
         agent_desc = st.text_area("Agent Description")
         agent_link = st.text_input("Launch Link (URL)")
         agent_img = st.text_input("Image URL")
+        badge = st.text_input("Badge (optional emoji)", value="")
+        paywall_active = st.checkbox("Premium Tool (requires unlock)", value=False)
+        stripe_url = st.text_input("Stripe Checkout URL") if paywall_active else ""
+        unlock_token_input = st.text_input("Unlock Token") if paywall_active else ""
 
         if st.button("✅ Save Agent"):
             new_agent = {
                 "name": agent_name,
                 "desc": agent_desc,
                 "link": agent_link,
-                "image": agent_img
+                "image": agent_img,
+                "badge": badge,
+                "category": agent_category,
+                "updated": "2025-07-22",
+                "launch_count": 0,
+                "paywall": {
+                    "active": paywall_active,
+                    "stripe_url": stripe_url,
+                    "unlock_token": unlock_token_input
+                }
             }
             tool_data[agent_category].append(new_agent)
             with open("config.json", "w") as f:
                 json.dump(tool_data, f, indent=2)
             st.success(f"Agent '{agent_name}' added to '{agent_category}'.")
 
-    # --- Tab 2: Upload Avatar Image (Base64 for local use) ---
+    # --- Tab 2: Upload Avatar Image (Base64 preview) ---
     with tab2:
         st.subheader("Upload Avatar")
         file = st.file_uploader("Upload Image", type=["png", "jpg", "jpeg"])
