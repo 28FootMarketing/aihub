@@ -2,7 +2,16 @@
 import streamlit as st
 import json
 import base64
+from urllib.parse import parse_qs
+query_params = st.experimental_get_query_params()
+unlocked_token = query_params.get("unlock", [None])[0]
 
+paywall = tool.get("paywall", {})
+if paywall.get("active"):
+    if unlocked_token != paywall.get("unlock_token"):
+        st.warning("🔒 Premium tool. Please unlock to continue.")
+        st.markdown(f"[🔓 Unlock Now]({paywall.get('stripe_url')})")
+        st.stop()
 # ---------- Config ----------
 st.set_page_config(page_title="28 Foot AI Dashboard", layout="wide", page_icon="🤖")
 
