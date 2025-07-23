@@ -1,7 +1,15 @@
+updated_admin_panel = """
+# admin_panel.py
 
 import streamlit as st
 import base64
 import json
+import datetime
+import requests
+
+# Constants
+GOOGLE_SHEET_WEBHOOK = "https://your-webhook-url.com/save-agent"  # Replace with real webhook or n8n endpoint
+TOKEN_ROTATOR_URL = "https://your-webhook-url.com/rotate-token"   # Optional for dynamic token rotation
 
 def load_admin_panel(tool_data):
     st.sidebar.markdown("### Admin Access")
@@ -10,11 +18,12 @@ def load_admin_panel(tool_data):
     if admin_code == "28FootAccess":
         st.markdown("## 🔐 Admin Control Panel")
 
-        tab1, tab2, tab3, tab4 = st.tabs([
+        tab1, tab2, tab3, tab4, tab5 = st.tabs([
             "🛠 Manage Agents",
-            "📸 Upload Assets",
+            "📸 Upload Avatars",
+            "💳 Paywall Setup",
             "🔁 GHL Triggers",
-            "📥 Export / Logs"
+            "📥 Export Logs"
         ])
 
         with tab1:
@@ -22,12 +31,10 @@ def load_admin_panel(tool_data):
             agent_name = st.text_input("Agent Name")
             agent_category = st.selectbox("Category", list(tool_data.keys()))
             agent_desc = st.text_area("Agent Description")
-            agent_link = st.text_input("Launch Link")
+            agent_link = st.text_input("Agent Launch URL")
             agent_image = st.text_input("Avatar Image URL")
-            agent_badge = st.text_input("Badge Icon (e.g., 🔥)")
-            agent_paywall = st.checkbox("Enable Paywall?")
-            stripe_url = st.text_input("Stripe Checkout URL") if agent_paywall else ""
-            unlock_token = st.text_input("Unlock Token") if agent_paywall else ""
+            agent_badge = st.text_input("Badge Emoji", value="🎯")
+            agent_updated = datetime.date.today().isoformat()
 
             if st.button("✅ Save Agent"):
                 new_agent = {
@@ -37,33 +44,61 @@ def load_admin_panel(tool_data):
                     "image": agent_image,
                     "badge": agent_badge,
                     "category": agent_category,
-                    "updated": "2025-07-23",
+                    "updated": agent_updated,
                     "launch_count": 0,
-                    "paywall": {
-                        "active": agent_paywall,
-                        "stripe_url": stripe_url,
-                        "unlock_token": unlock_token
-                    } if agent_paywall else { "active": False }
+                    "paywall": {"active": False}
                 }
-                tool_data[agent_category].append(new_agent)
-                with open("config.json", "w") as f:
-                    json.dump(tool_data, f, indent=2)
-                st.success(f"Agent '{agent_name}' saved.")
+
+                try:
+                    response = requests.post(GOOGLE_SHEET_WEBHOOK, json=new_agent)
+                    if response.status_code == 200:
+                        st.success(f"Agent '{agent_name}' saved successfully.")
+                    else:
+                        st.error("Save failed. Please check webhook URL.")
+                except Exception as e:
+                    st.error(f"Error: {e}")
+
         with tab2:
-            st.markdown("### 🖼 Upload Avatar")
-            uploaded_file = st.file_uploader("Upload avatar image", type=["png", "jpg", "jpeg"])
+            st.markdown("### 🖼 Upload Avatar Image")
+            uploaded_file = st.file_uploader("Upload avatar", type=["png", "jpg", "jpeg"])
             if uploaded_file:
                 st.image(uploaded_file, caption="Preview")
                 b64 = base64.b64encode(uploaded_file.getvalue()).decode()
-                st.text_area("Base64 Embed (first 200 chars)", b64[:200] + "...")
+                st.text_area("Base64 String", b64[:200] + "...")
+
         with tab3:
-            st.markdown("### 🔁 Trigger GHL Webhook")
-            email = st.text_input("Lead Email")
-            tag = st.text_input("GHL Tag to Apply")
-            if st.button("📨 Send Tag to GHL"):
-                st.success(f"Webhook triggered (placeholder) for {email} with tag '{tag}'")
+            st.markdown("### 💳 Paywall Token + Stripe Setup")
+            token_agent_name = st.text_input("Agent Name (Token Protected)")
+            stripe_url = st.text_input("Stripe Checkout URL")
+            if st.button("🔐 Generate & Assign Token"):
+                try:
+                    payload = {"tool": token_agent_name}
+                    res = requests.post(TOKEN_ROTATOR_URL, json=payload)
+                    if res.status_code == 200:
+                        generated_token = res.json().get("token", "unknown")
+                        st.success(f"Token generated: {generated_token}")
+                    else:
+                        st.warning("Failed to generate token.")
+                except Exception as e:
+                    st.error(f"Token error: {e}")
+
         with tab4:
-            st.markdown("### 📥 Export Logs")
-            st.download_button("Download JSON", data=json.dumps(tool_data), file_name="export_config.json")
+            st.markdown("### 🔁 Trigger GHL Tag")
+            email = st.text_input("Lead Email")
+            tag = st.text_input("Tag to Apply in GHL")
+            if st.button("📨 Apply Tag"):
+                st.success(f"Webhook triggered for {email} with tag '{tag}' (simulated).")
+
+        with tab5:
+            st.markdown("### 📥 Download Agent Data")
+            st.download_button("⬇ Download config.json", data=json.dumps(tool_data), file_name="config.json")
     else:
-        st.warning("🔒 Admin panel locked. Enter access code in sidebar.")
+        st.warning("🔒 Admin panel locked. Enter admin code in sidebar.")
+"""
+
+# Save the updated admin panel file
+admin_panel_path = "/mnt/data/admin_panel.py"
+with open(admin_panel_path, "w") as f:
+    f.write(updated_admin_panel)
+
+admin_panel_path
